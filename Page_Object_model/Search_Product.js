@@ -23,8 +23,28 @@ export class SortProductsPage{
         await this.add_to_cart.click()
         await this.cart_item.click()
         await this.Procedsubmit.click()
-        await this.signin_submit.waitFor({ state: 'visible', timeout: 10000 });
-        await this.signin_submit.click()
+        await this.Procedsubmit.click();
+        // wait for navigation
+       await this.page.waitForTimeout(3000);
+       // debug
+       console.log("URL:", this.page.url());
+       console.log("Proceed-2 exists:", await this.signin_submit.count());
+      if (await this.signin_submit.count() > 0) {
+           await this.signin_submit.click();
+        } 
+        else 
+            {
+    throw new Error("Proceed-2 not found - checkout flow did not reach step 2");
+}
+        // await this.page.waitForLoadState('domcontentloaded');
+        // console.log("After proceed-1 URL:", this.page.url());
+        // const proceed2Count = await this.signin_submit.count();
+        // console.log("Proceed-2 count:", proceed2Count);
+
+
+
+        // await this.signin_submit.waitFor({ state: 'visible', timeout: 10000 });
+        // await this.signin_submit.click()
         await this.housenum.fill(registration.house_number)
         await this.billingsubmit.click()
         await select_payment_Dropdown(this.page , '#payment-method', 'Cash on Delivery')
