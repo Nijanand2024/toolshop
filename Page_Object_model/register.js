@@ -29,8 +29,8 @@ export class Registerpage{
         await this.postalCode.fill(register.postcode);
         await this.houseNumber.fill(register.house_number);
         await this.PhoneNumber.fill(register.contact_number);
-        await this.email_address.fill(register.email);
-        await this.pass_word.fill(register.passowrd);
+        await this.email_address.fill(register.email_2);
+        await this.pass_word.fill(register.pass_02);
         await this.registr_Btn.click();
     }
 }
