@@ -10,7 +10,8 @@ export class SortProductsPage{
         this.cart_item = page.locator('//a[@aria-label="cart"]')
         this.Procedsubmit = page.locator('//button[@data-test = "proceed-1"]')
         //this.signin_submit = page.locator('//button[@data-test = "proceed-2"]')
-        this.signin_submit = page.getByRole('button', { name: 'Proceed to checkout' })
+        //this.signin_submit = page.getByRole('button', { name: 'Proceed to checkout' })
+        this.signin_submit = page.getByTestId('proceed-2')
         this.housenum = page.locator('//input[@id="house_number"]')
         this.billingsubmit = page.locator('//button[@data-test = "proceed-3"]')
         this.payment_submit = page.locator('//button[@data-test="finish"]')
@@ -22,6 +23,7 @@ export class SortProductsPage{
         await this.add_to_cart.click()
         await this.cart_item.click()
         await this.Procedsubmit.click()
+        await this.signin_submit.waitFor({ state: 'visible', timeout: 10000 });
         await this.signin_submit.click()
         await this.housenum.fill(registration.house_number)
         await this.billingsubmit.click()
