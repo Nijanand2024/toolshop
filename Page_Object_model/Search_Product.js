@@ -4,7 +4,7 @@ import { select_payment_Dropdown } from "../Generic_utils/utils"
 export class SortProductsPage{
     constructor(page){
         this.page = page
-        this.Product_title = page.locator(' (//h5[@class="card-title"] )[1]')
+        this.Product_title = page.getByText(" Sheet Sander ")
         this.add_to_cart = page.locator('#btn-add-to-cart')
         this.cart_item = page.locator('//a[@aria-label="cart"]')
         this.Procedsubmit = page.locator('//button[@data-test = "proceed-1"]')
