@@ -17,6 +17,7 @@ export class SortProductsPage{
     }
     async Search_item(){
         await select_Product_Dropdown(this.page, '//button[@data-test="nav-categories"]','Power Tools')
+        await expect(this.Product_title).toBeVisible({ timeout: 10000 });
         await this.Product_title.click()
         await this.add_to_cart.click()
         await this.cart_item.click()
