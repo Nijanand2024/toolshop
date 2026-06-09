@@ -4,7 +4,10 @@ import { LoginPage } from "../Page_Object_model/login"
 import  registration from "../Test_Data/registration.json"
 import { Registerpage } from "../Page_Object_model/register"
 test("Search_Products", async ({page})=>{
-    await page.goto(registration.url)
+    await page.goto(registration.url,{
+        waitUntil: 'domcontentloaded',
+        timeout: 60000
+    })
     //! User register
     const user_register= new Registerpage(page);
     await user_register.user_registration()
