@@ -5,7 +5,7 @@ import { expect } from '@playwright/test';
 export class SortProductsPage{
     constructor(page){
         this.page = page
-        this.Product_title = page.getByText(" Sheet Sander ")
+        this.Product_title = page.getByText(/Sheet Sander/i)
         this.add_to_cart = page.locator('#btn-add-to-cart')
         this.cart_item = page.locator('//a[@aria-label="cart"]')
         this.Procedsubmit = page.locator('//button[@data-test = "proceed-1"]')
@@ -18,7 +18,6 @@ export class SortProductsPage{
     }
     async Search_item(){
         await select_Product_Dropdown(this.page, '//button[@data-test="nav-categories"]','Power Tools')
-        await expect(this.Product_title).toBeVisible({ timeout: 10000 });
         await this.Product_title.click()
         await this.add_to_cart.click()
         await this.cart_item.click()
