@@ -30,8 +30,7 @@ steps {
  
                     // Continue pipeline even if tests fail 
                     if (testStatus != 0) { 
-                        echo 'Playwright tests failed, continuing to 
-publish report...' 
+                        echo 'Playwright tests failed, continuing to publish report...' 
                     } 
                  } 
             } 
